@@ -57,12 +57,10 @@
                                class="form-control"
                                placeholder="Search">
                         </div>
-                        <button type="submit" class="btn btn-default">
-                        Submit
                     </button>
                     </form>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#">Login</a></li>
+                        <li><a data-toggle="modal" data-target="#LoginModal">Login</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav>
