@@ -10,20 +10,12 @@ class ConnectionManager {
   private $host = '127.0.0.1';
   private $user = 'root';
   private $pass = '';
-  private $name = 'dbuser';
+  private $name = 'db_forum';
   
 
   // The db connection is established in the private constructor.
   private function __construct()
   {
-    // try{
-    //   $this->conn = new \PDO("mysql:host=$this->host;dbname=$this->name", $this->user,$this->pass);
-    //   $this->$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-    //   echo "Connected successfully"; 
-    // }
-    // catch(\PDOException $e){
-    //   echo $e;
-    // }
 
     try {
       $conn = new \PDO("mysql:host=$this->host;dbname=$this->name", $this->user, $this->pass);

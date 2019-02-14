@@ -3,14 +3,19 @@
 namespace controllers;
 
 use lib\MVC\Controller\BaseController;
+use models\UserModel;
 
 class User extends BaseController {
-    protected function login() {
+    protected function index() {
         $this->RenderView($viewModel);
     }
 
-    protected function register(){
-        var_dump($_REQUEST);die;
+    protected function login(){
+        $userModel = new UserModel(); 
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+
+        $userModel->login($username,$password);
     }
 }
 

@@ -8,9 +8,9 @@
         </div>
         <!-- body -->
         <div class="modal-body">
-          <form role="form" action="user/register" method="post">
+          <form role="form" action="user/login" method="post">
             <div class="form-group">
-              <input type="email" class="form-control" placeholder="Email" name="email"/><br/>
+              <input type="email" class="form-control" placeholder="Email" name="username"/><br/>
               <input type="password" class="form-control" placeholder="Password" name="password"/>
             </div>
         </div>

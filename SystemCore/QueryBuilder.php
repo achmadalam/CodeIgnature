@@ -9,10 +9,12 @@ class QueryBuilder {
     private $key;
     private $order;
     private $join;
+    private $condition;
 
     public function __construct($table,$key){
         $this->table = $table;
         $this->key = $key;
+        $this->condition = array();
     }
 
     public function select($column = '*'){
@@ -24,12 +26,11 @@ class QueryBuilder {
 
     public function join($join){
         if(is_array($join))
-            $this->join[] = $join[0]." ".$join[1];
+            $this->join = $join[0]." ".$join[1];
     }
 
-    public function where($condition){
-        if(is_array($condition))
-            $this->condition[] = $condition[0]."".$condition[1];
+    public function where($field, $value, $opr = '='){
+        $this->condition = array_merge($this->condition,array($field." ".$opr." ".$this->escape($value)));
     }
 
     public function limit($limit){
@@ -45,14 +46,18 @@ class QueryBuilder {
         $join = $this->join;
         $limit = $this->limit;
         $order = $this->order;
+        $condition = $this->condition;
+        
+        $temp = $sql." ";
 
-        $temp = $sql."<br/>".$join."<br/>".$limit."<br/>".$order;
         if(!empty($join))
-            $temp .= "<br/>".$join;
+            $temp .= " ".$join;
+        if(!empty($condition))
+            $temp .= " where ".implode(" and ",$condition);
         if(!empty($limit))
-            $temp .= "<br/>".$limit;
+            $temp .= " ".$limit;
         if(!empty($order))
-            $temp .= "<br/>".$order;
+            $temp .= " ".$order;
         $this->sql = $temp;
     }
 
